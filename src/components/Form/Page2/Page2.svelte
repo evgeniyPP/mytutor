@@ -1,15 +1,15 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { form } from "../../../store.js";
   import LangStudent from "./LangStudent.svelte";
   import LangTutor from "./LangTutor.svelte";
-  export let form;
   const dispatch = createEventDispatcher();
   let langIndex = 0;
 
   const addLang = () => {
     langIndex++;
-    form.langs = [
-      ...form.langs,
+    $form.langs = [
+      ...$form.langs,
       {
         id: langIndex,
         name: "Английский",
@@ -19,13 +19,11 @@
   };
 
   const deleteLang = e => {
-    const langs = form.langs;
+    const langs = $form.langs;
     const id = e.detail;
-    if (langs.length > 1) {
-      const index = langs.indexOf(langs.find(lang => lang.id === id));
-      langs.splice(index, 1);
-      form = form;
-    }
+    const index = langs.indexOf(langs.find(lang => lang.id === id));
+    langs.splice(index, 1);
+    $form = $form;
   };
 </script>
 
@@ -91,24 +89,22 @@
 {#if form.isStudent}
   <div>
     <h4>Какой(-ие) язык(-и) вы хотите учить?</h4>
-    {#each form.langs as lang (lang.id)}
+    {#each $form.langs as lang (lang.id)}
       <LangStudent
         bind:lang={lang.name}
         bind:level={lang.level}
         on:delete={deleteLang}
-        canRemove={form.langs.length > 1}
         id={lang.id} />
     {/each}
   </div>
 {:else}
   <div>
     <h4>Какой(-ие) язык(-и) вы хотите преподавать?</h4>
-    {#each form.langs as lang (lang.id)}
+    {#each $form.langs as lang (lang.id)}
       <LangTutor
         bind:lang={lang.name}
         bind:level={lang.level}
         on:delete={deleteLang}
-        canRemove={form.langs.length > 1}
         id={lang.id} />
     {/each}
   </div>

@@ -1,9 +1,9 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { form } from "../../../store.js";
   export let lang;
   export let level;
   export let id;
-  export let canRemove;
   const dispatch = createEventDispatcher();
 
   let selectedLang;
@@ -130,7 +130,7 @@
       <p class="lang-volume">{langVolume[level]}</p>
     </div>
   </div>
-  {#if canRemove}
+  {#if $form.langs.length > 1}
     <i class="fas fa-trash-alt" on:click={() => dispatch('delete', id)} />
   {/if}
 </div>

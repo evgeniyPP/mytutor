@@ -1,7 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  export let form;
-  export let page;
+  import { form } from "../../store.js";
   const dispatch = createEventDispatcher();
 </script>
 
@@ -68,15 +67,15 @@
 </style>
 
 <h4>Пожалуйста, введите свои данные:</h4>
-<input class="name" type="text" placeholder="Имя" bind:value={form.name} />
-<input type="text" placeholder="Фамилия" bind:value={form.surname} />
-<input type="email" placeholder="E-mail" bind:value={form.email} />
-<input type="tel" placeholder="Телефон" bind:value={form.phone} />
+<input class="name" type="text" placeholder="Имя" bind:value={$form.name} />
+<input type="text" placeholder="Фамилия" bind:value={$form.surname} />
+<input type="email" placeholder="E-mail" bind:value={$form.email} />
+<input type="tel" placeholder="Телефон" bind:value={$form.phone} />
 
 <div class="age">
   <label class="age__title">
     Сколько Вам лет:
-    <input type="number" bind:value={form.age} min="4" max="99" />
+    <input type="number" bind:value={$form.age} min="4" max="99" />
   </label>
 </div>
 
@@ -86,7 +85,7 @@
     <input
       class="visit-purpose__item"
       type="radio"
-      bind:group={form.isStudent}
+      bind:group={$form.isStudent}
       value={true} />
     Я студент. Хочу найти репетитора
   </label>
@@ -94,7 +93,7 @@
     <input
       class="visit-purpose__item"
       type="radio"
-      bind:group={form.isStudent}
+      bind:group={$form.isStudent}
       value={false} />
     Я преподаватель. Хочу найти студентов
   </label>

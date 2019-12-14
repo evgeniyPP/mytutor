@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  export let form;
+  import { form } from "../../store.js";
   const dispatch = createEventDispatcher();
 </script>
 
@@ -39,7 +39,7 @@
   }
 </style>
 
-{#if form.isStudent}
+{#if $form.isStudent}
   <h4>Передать что-нибудь репетитору?</h4>
 {:else}
   <h4>Передать что-нибудь студентам?</h4>
@@ -48,7 +48,7 @@
   cols="30"
   rows="10"
   placeholder="Ваш комментарий"
-  bind:value={form.comment} />
+  bind:value={$form.comment} />
 
 <div class="btns">
   <input
