@@ -17,6 +17,7 @@
     border-radius: 5px;
     margin-left: 1em;
     margin-right: 1em;
+    transition: 0.2s all;
   }
   .btn:hover,
   .btn:focus {

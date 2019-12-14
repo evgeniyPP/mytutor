@@ -1,5 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { slide } from "svelte/transition";
+  import { quintOut } from "svelte/easing";
   import { form } from "../../../store.js";
   export let lang;
   export let level;
@@ -108,7 +110,9 @@
   }
 </style>
 
-<div class="wrapper">
+<div
+  class="wrapper"
+  transition:slide|local={{ duration: 700, easing: quintOut }}>
   <div class="lang">
     <select
       bind:value={selectedLang}

@@ -45,6 +45,7 @@
     margin-top: 2em;
     margin-left: 1em;
     margin-right: 1em;
+    transition: 0.2s all;
   }
   .btn__next:hover,
   .btn__next:focus {

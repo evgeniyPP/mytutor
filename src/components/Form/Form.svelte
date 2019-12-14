@@ -6,6 +6,9 @@
 
   let page = 1;
 
+  const nextPage = () => page++;
+  const backPage = () => page--;
+
   const onSubmit = () => {
     console.log($form);
     page = 1;
@@ -21,10 +24,10 @@
 
 <form>
   {#if page === 1}
-    <Page1 on:next={() => page++} />
+    <Page1 on:next={nextPage} />
   {:else if page === 2}
-    <Page2 on:back={() => page--} on:next={() => page++} />
+    <Page2 on:back={backPage} on:next={nextPage} />
   {:else}
-    <Page3 on:back={() => page--} on:submit={onSubmit} />
+    <Page3 on:back={backPage} on:submit={onSubmit} />
   {/if}
 </form>

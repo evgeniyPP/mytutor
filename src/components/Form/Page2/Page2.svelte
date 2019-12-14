@@ -61,6 +61,7 @@
     border-radius: 5px;
     margin-left: 1em;
     margin-right: 1em;
+    transition: 0.2s all;
   }
   .btn:hover,
   .btn:focus {
@@ -86,7 +87,7 @@
   }
 </style>
 
-{#if form.isStudent}
+{#if $form.isStudent}
   <div>
     <h4>Какой(-ие) язык(-и) вы хотите учить?</h4>
     {#each $form.langs as lang (lang.id)}
@@ -110,10 +111,12 @@
   </div>
 {/if}
 
-<div class="add-lang">
-  <i class="fas fa-plus" tabindex="0" on:click={addLang} />
-  <span id="add-lang">Добавить язык</span>
-</div>
+{#if $form.langs.length < 6}
+  <div class="add-lang">
+    <i class="fas fa-plus" tabindex="0" on:click={addLang} />
+    <span id="add-lang">Добавить язык</span>
+  </div>
+{/if}
 
 <div class="btns">
   <input
