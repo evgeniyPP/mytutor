@@ -7,15 +7,17 @@
   let langIndex = 0;
 
   const addLang = () => {
-    langIndex++;
-    $form.langs = [
-      ...$form.langs,
-      {
-        id: langIndex,
-        name: "Английский",
-        level: 0
-      }
-    ];
+    if ($form.langs.length < 3) {
+      langIndex++;
+      $form.langs = [
+        ...$form.langs,
+        {
+          id: langIndex,
+          name: "Английский",
+          level: 0
+        }
+      ];
+    }
   };
 
   const deleteLang = e => {
@@ -45,6 +47,10 @@
   #add-lang {
     opacity: 0;
     transition: 0.7s all;
+    color: #757575;
+  }
+
+  .fa-plus--disabled {
     color: #757575;
   }
 
@@ -111,12 +117,18 @@
   </div>
 {/if}
 
-{#if $form.langs.length < 6}
-  <div class="add-lang">
-    <i class="fas fa-plus" tabindex="0" on:click={addLang} />
+<div class="add-lang">
+  <i
+    class="fas fa-plus"
+    class:fa-plus--disabled={$form.langs.length > 2}
+    tabindex="0"
+    on:click={addLang} />
+  {#if $form.langs.length < 3}
     <span id="add-lang">Добавить язык</span>
-  </div>
-{/if}
+  {:else}
+    <span id="add-lang">Не более трех языков</span>
+  {/if}
+</div>
 
 <div class="btns">
   <input

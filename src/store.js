@@ -16,3 +16,5 @@ export const form = writable({
     }
   ]
 });
+
+export let page = writable(1);

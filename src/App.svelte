@@ -1,6 +1,8 @@
 <script>
+  import { fade } from "svelte/transition";
   import Header from "./components/Header.svelte";
   import Form from "./components/Form/Form.svelte";
+  import { page } from "./store.js";
 </script>
 
 <style>
@@ -18,14 +20,27 @@
     padding-left: 50%;
     margin: 2.5em auto;
   }
+
   .left {
     width: 50%;
-    background-image: url("assets/back.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 80%;
     height: 100vh;
     position: fixed;
+  }
+
+  .left1 {
+    background-image: url("assets/left1.png");
+  }
+
+  .left2 {
+    background-image: url("assets/left2.png");
+  }
+
+  .left3 {
+    background-image: url("assets/left3.png");
+    background-position: 50% 100%;
   }
 
   @media (max-width: 1024px) {
@@ -37,6 +52,7 @@
     #app {
       overflow: auto;
     }
+
     .right {
       width: 75%;
       padding-left: 0;
@@ -44,13 +60,14 @@
       margin-top: 1em;
       margin-bottom: 1em;
     }
+
     :global(body) {
       background-image: linear-gradient(
           to right,
           rgba(0, 0, 0, 0.7),
           rgba(0, 0, 0, 0.7)
         ),
-        url("assets/back.png");
+        url("assets/left1.png");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: 50% 80%;
@@ -68,8 +85,14 @@
 </style>
 
 <div id="app">
-  <div class="left" />
-  <div class="right">
+  {#if $page === 1}
+    <div class="left left1" transition:fade />
+  {:else if $page === 2}
+    <div class="left left2" transition:fade />
+  {:else}
+    <div class="left left3" transition:fade />
+  {/if}
+  <div class="right" transition:fade>
     <Header />
     <Form />
   </div>
