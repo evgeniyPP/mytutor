@@ -20,6 +20,17 @@
     }
   };
 
+  const goBack = () => {
+    $form.langs = [
+      {
+        id: 0,
+        name: "Английский",
+        level: 0
+      }
+    ];
+    dispatch("back");
+  };
+
   const deleteLang = e => {
     const langs = $form.langs;
     const id = e.detail;
@@ -131,11 +142,7 @@
 </div>
 
 <div class="btns">
-  <input
-    class="btn btn__back"
-    type="button"
-    value="Назад"
-    on:click={() => dispatch('back')} />
+  <input class="btn btn__back" type="button" value="Назад" on:click={goBack} />
   <input
     class="btn btn__next"
     type="button"

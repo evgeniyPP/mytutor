@@ -43,6 +43,11 @@
     background-position: 50% 100%;
   }
 
+  .left4 {
+    background-image: url("assets/left4.png");
+    background-position: 50% 30%;
+  }
+
   @media (max-width: 1024px) {
     .right {
       width: 45%;
@@ -89,8 +94,10 @@
     <div class="left left1" transition:fade />
   {:else if $page === 2}
     <div class="left left2" transition:fade />
-  {:else}
+  {:else if $page === 3}
     <div class="left left3" transition:fade />
+  {:else}
+    <div class="left left4" transition:fade />
   {/if}
   <div class="right" transition:fade>
     <Header />
