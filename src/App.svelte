@@ -8,10 +8,12 @@
 <style>
   :global(body) {
     padding: 0;
+    background: #fff;
   }
   #app {
     display: flex;
-    height: 100vh;
+    min-height: 80vh;
+    max-height: 100vh;
     overflow: auto;
     position: relative;
   }
@@ -56,6 +58,7 @@
   @media (max-width: 880px) {
     #app {
       overflow: auto;
+      background: 0;
     }
 
     .right {
@@ -67,6 +70,7 @@
     }
 
     :global(body) {
+      background: #000;
       background-image: linear-gradient(
           to right,
           rgba(0, 0, 0, 0.7),
