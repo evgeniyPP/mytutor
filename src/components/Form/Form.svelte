@@ -1,20 +1,28 @@
 <script>
+  import axios from "axios";
   import Page1 from "./Page1.svelte";
   import Page2 from "./Page2/Page2.svelte";
   import Page3 from "./Page3.svelte";
   import Page4 from "./Page4.svelte";
-  import { form, page } from "../../store.js";
+  import { form, isStudent, page } from "../../store.js";
 
   const nextPage = () => $page++;
   const backPage = () => $page--;
 
-  const onSubmit = () => {
-    nextPage();
-    console.log($form);
+  const onSubmit = async () => {
+    let response;
+    if ($isStudent) {
+      response = await axios.post("http://localhost:5001/students/add", $form);
+    } else {
+      response = await axios.post("http://localhost:5001/tutors/add", $form);
+    }
+    if (response.status === 200) {
+      nextPage();
+    }
   };
   const onReset = () => {
+    $isStudent = true;
     $form = {
-      isStudent: true,
       name: null,
       surname: null,
       age: null,

@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import { form } from "../../store.js";
+  import { form, isStudent } from "../../store.js";
   const dispatch = createEventDispatcher();
 </script>
 
@@ -40,7 +40,7 @@
   }
 </style>
 
-{#if $form.isStudent}
+{#if $isStudent}
   <h4>Передать что-нибудь репетитору?</h4>
 {:else}
   <h4>Передать что-нибудь студентам?</h4>

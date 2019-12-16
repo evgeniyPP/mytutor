@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import { form } from "../../store.js";
+  import { form, isStudent } from "../../store.js";
   const dispatch = createEventDispatcher();
 </script>
 
@@ -86,7 +86,7 @@
     <input
       class="visit-purpose__item"
       type="radio"
-      bind:group={$form.isStudent}
+      bind:group={$isStudent}
       value={true} />
     Я студент. Хочу найти репетитора
   </label>
@@ -94,7 +94,7 @@
     <input
       class="visit-purpose__item"
       type="radio"
-      bind:group={$form.isStudent}
+      bind:group={$isStudent}
       value={false} />
     Я преподаватель. Хочу найти студентов
   </label>

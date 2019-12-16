@@ -1,7 +1,6 @@
 import { writable } from 'svelte/store';
 
 export const form = writable({
-  isStudent: true,
   name: null,
   surname: null,
   age: null,
@@ -16,5 +15,7 @@ export const form = writable({
     }
   ]
 });
+
+export const isStudent = writable(true);
 
 export let page = writable(1);

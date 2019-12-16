@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import { form } from "../../../store.js";
+  import { form, isStudent } from "../../../store.js";
   import LangStudent from "./LangStudent.svelte";
   import LangTutor from "./LangTutor.svelte";
   const dispatch = createEventDispatcher();
@@ -104,7 +104,7 @@
   }
 </style>
 
-{#if $form.isStudent}
+{#if $isStudent}
   <div>
     <h4>Какой(-ие) язык(-и) вы хотите учить?</h4>
     {#each $form.langs as lang (lang.id)}
