@@ -12,9 +12,15 @@
   const onSubmit = async () => {
     let response;
     if ($isStudent) {
-      response = await axios.post("http://localhost:5001/students/add", $form);
+      response = await axios.post(
+        "https://my-tutor-server.herokuapp.com/students/add",
+        $form
+      );
     } else {
-      response = await axios.post("http://localhost:5001/tutors/add", $form);
+      response = await axios.post(
+        "https://my-tutor-server.herokuapp.com/tutors/add",
+        $form
+      );
     }
     if (response.status === 200) {
       nextPage();
