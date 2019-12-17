@@ -9,7 +9,7 @@ const tutorSchema = new Schema(
     age: { type: Number, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
-    comment: { type: String, required: true },
+    comment: { type: String, required: false },
     langs: { type: Array, required: true }
   },
   {
