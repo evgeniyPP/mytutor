@@ -1,6 +1,16 @@
 <script>
   import Header from "./Header.svelte";
-  import { tutors, langLevelText } from "../store.js";
+  import { form, tutors, langLevelText } from "../store.js";
+
+  const studentLangs = $form.langs.map(lang => lang.name);
+  const suitableTutors = $tutors.filter(tutor => {
+    const tutorLangs = tutor.langs.map(lang => lang.name);
+    for (let lang of tutorLangs) {
+      if (studentLangs.includes(lang)) {
+        return true;
+      }
+    }
+  });
 </script>
 
 <style>
@@ -23,6 +33,18 @@
     border-radius: 2px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     padding: 1.5em 0;
+  }
+  .selected-langs {
+    width: 70%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    padding: 1.5em 2em;
+    font-weight: normal;
+  }
+  .selected-langs > span {
+    font-weight: bold;
   }
   .tutor-list {
     width: 95%;
@@ -54,6 +76,7 @@
     font-size: 1.25rem;
   }
   .langs {
+    min-height: 150px;
     border: 1px solid #757575;
     border-radius: 5px;
     padding: 0.5em;
@@ -73,8 +96,12 @@
   <div class="header">
     <Header />
   </div>
+  <h3 class="selected-langs">
+    {$form.name}, Вам были отобраны репетиторы по языкам:
+    <span>{studentLangs.join(', ')}</span>
+  </h3>
   <div class="tutor-list">
-    {#each $tutors as { name, surname, age, email, phone, comment, langs }, index}
+    {#each suitableTutors as { name, surname, age, email, phone, comment, langs }, index}
       <div class="tutor">
         <img
           class="tutor__avatar"

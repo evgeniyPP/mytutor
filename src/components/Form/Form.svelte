@@ -31,25 +31,6 @@
       nextPage();
     }
   };
-  const onReset = () => {
-    $isStudent = true;
-    $form = {
-      name: null,
-      surname: null,
-      age: null,
-      email: null,
-      phone: null,
-      comment: null,
-      langs: [
-        {
-          id: 0,
-          name: "Английский",
-          level: 0
-        }
-      ]
-    };
-    $page = 1;
-  };
 </script>
 
 <style>
@@ -67,6 +48,6 @@
   {:else if $page === 3}
     <Page3 on:back={backPage} on:submit={onSubmit} />
   {:else}
-    <Page4 on:reset={onReset} />
+    <Page4 />
   {/if}
 </form>
