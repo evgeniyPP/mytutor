@@ -59,7 +59,6 @@
     .right {
       width: 75%;
       padding-left: 0;
-      color: #fff;
       margin-top: 1em;
       margin-bottom: 1em;
     }

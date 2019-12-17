@@ -90,6 +90,28 @@
   .lang {
     margin: 0;
   }
+
+  @media (max-width: 910px) {
+    .selected-langs {
+      width: 100%;
+    }
+  }
+  @media (max-width: 420px) {
+    .header {
+      margin-bottom: 10px;
+    }
+    .selected-langs {
+      padding: 1em;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .tutor-list {
+      width: 100%;
+    }
+    .tutor {
+      margin: 5px 0;
+    }
+  }
 </style>
 
 <div class="wrapper">
