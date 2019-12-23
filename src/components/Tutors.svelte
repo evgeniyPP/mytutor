@@ -29,10 +29,11 @@
     text-align: center;
     font-size: 1.25rem;
     width: 100%;
-    background: #fff;
     border-radius: 2px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     padding: 1.5em 0;
+    background: url("assets/tutors-header-bg.png") no-repeat 50% 45% / cover;
+    color: #e2e1e0;
   }
   .selected-langs {
     width: 70%;
