@@ -2,6 +2,13 @@
   import { createEventDispatcher } from "svelte";
   import { form, isStudent } from "../../store.js";
   const dispatch = createEventDispatcher();
+
+  const onSubmit = () => {
+    if (!$form.comment) {
+      $form.comment = "Без описания";
+    }
+    dispatch("submit");
+  };
 </script>
 
 <style>
@@ -61,5 +68,5 @@
     class="btn btn__submit"
     type="button"
     value="Отправить"
-    on:click={() => dispatch('submit')} />
+    on:click={onSubmit} />
 </div>

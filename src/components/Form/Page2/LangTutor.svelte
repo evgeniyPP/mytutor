@@ -2,7 +2,7 @@
   import { createEventDispatcher } from "svelte";
   import { slide } from "svelte/transition";
   import { quintOut } from "svelte/easing";
-  import { form } from "../../../store.js";
+  import { form, langLevelText } from "../../../store.js";
   export let lang;
   export let level;
   export let id;
@@ -10,14 +10,6 @@
 
   let selectedLang;
   const langLevel = ["A0-C2", "A0-A2", "B1-B2", "C1-C2", "A0-B2", "B1-C2"];
-  const langLevelText = [
-    "Любой уровень",
-    "Начинающие",
-    "Продолжающие",
-    "Продвинутые",
-    "Начинающие и Продолжающие",
-    "Продолжающие и Продвинутые"
-  ];
   const langDesc = [
     "На все руки мастер",
     "Поставить базу",

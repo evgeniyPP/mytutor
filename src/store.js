@@ -32,3 +32,19 @@ export const langLevelText = [
   'Начинающие и Продолжающие',
   'Продолжающие и Продвинутые'
 ];
+
+export const validRegexs = {
+  name: /^\D+$/,
+  surname: /^\D+$/,
+  age: /^\d{1,2}$/,
+  email: /^\S+@\S+\.\w{2,4}$/,
+  phone: /^\+*\d{11}$/
+};
+
+export const validation = writable({
+  name: false,
+  surname: false,
+  age: false,
+  email: false,
+  phone: false
+});

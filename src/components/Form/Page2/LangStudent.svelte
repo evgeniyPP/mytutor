@@ -10,7 +10,7 @@
 
   let selectedLang;
   const langLevel = ["A0", "A1", "A2", "B1", "B2", "C1", "C2"];
-  const langLevelText = [
+  const langLevelTextStudent = [
     "Starter",
     "Beginner",
     "Elementary",
@@ -128,7 +128,7 @@
   </div>
   <div class="range__value">
     <span class="range__show">{langLevel[level]}</span>
-    <span>– {langLevelText[level]}</span>
+    <span>– {langLevelTextStudent[level]}</span>
     <div class="lang-desc">
       <span>{langDesc[level]}</span>
       <p class="lang-volume">{langVolume[level]}</p>
