@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const studentRequest = async data => {
-  await axios.post('https://my-tutor-server.herokuapp.com/students/add', data);
-  const response = await axios.get('https://my-tutor-server.herokuapp.com/tutors/');
+  await axios.post('https://mytutor-server.herokuapp.com/students/add', data);
+  const response = await axios.get('https://mytutor-server.herokuapp.com/tutors/');
   return {
     status: response.status,
     tutors: response.data
@@ -10,7 +10,7 @@ const studentRequest = async data => {
 };
 
 const tutorRequest = async data => {
-  const response = await axios.post('https://my-tutor-server.herokuapp.com/tutors/add', data);
+  const response = await axios.post('https://mytutor-server.herokuapp.com/tutors/add', data);
   return {
     status: response.status
   };
